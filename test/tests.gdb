@@ -25,7 +25,6 @@
 
 echo ======================================================\n
 echo Running all tests..."\n\n
-
 # Example test:
 test "PINA: 0x00, PINB: 0x00 => PORTC: 0"
 # Set inputs
@@ -39,6 +38,36 @@ expectPORTC 0
 checkResult
 
 # Add tests below
+echo Running all tests..."\n\n
+test PINA[1:0]: 00, PORTB0: 0
+setPINA 0x00
+continue 2
+expectPORTB 0x00
+checkResult
+
+test PINA[1:0]: 01, PORTB0: 1
+setPINA 0x01
+continue 2
+expectPORTB 0x01
+checkResult
+
+test PINA[1:0]: 10, PORTB0: 0
+setPINA 0x02
+continue 2
+expectPORTB 0x00
+checkResult
+
+test PINA[1:0]: 11, PORTB0: 0
+setPINA 0x03
+continue 2
+expectPORTB 0x00
+checkResult
+
+commands
+silent
+# add all variables you want to inspect
+end
+
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
