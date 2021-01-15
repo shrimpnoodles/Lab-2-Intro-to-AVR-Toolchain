@@ -20,28 +20,29 @@ int main(void) {
   
   unsigned char weightTotal = 0x00;
   unsigned char tracker = 0x00;
-  
+  unsigned char pinA =0x00;
+unsigned char pinB = 0x00;
+unsigned char pinC = 0x00;
   
     /* Insert your solution below */
     while (1) {
-	        weightTotal = PINA + PINB + PINC;
-          
-          if(weightTotal > 0x8c){
-              tracker = (tracker & 0xFC) | 0x01;
-              }
-          weightTotal = weightTotal & 0xFC;
-          if(PINA > PINC){
-            if((PINA - PINC) > 0X50){
-                tracker = (tracker & 0xFC) | 0x02;
-                }
-               }
-          else if(PINC > PINA){
-              if((PINC - PINA) > 0X50){
-                  tracker = (tracker & 0xFC) | 0x02;
-                  }
-                 }
-             PORTD = weightTotal + tracker;
-             tracker = (tracker & 0xFC) | 0x00;
+	        pinA = PINA;
+	    	pinB = PINB;
+	    	pinC = PINC;
+	    
+	    weightTotal = pinA + pinB + pinC //get total weight of 3 pins
+         
+	   if(weightTotal > 0x8C){
+		   tracker = (tracker & 0xFC) | 0x01;
+	   }
+	    if(abs(pinA - pinC) > 0x50){
+		    tracker = (tracker & 0xFD) | 0x02;
+	    }
+	    PORTD = tracker; // setting d0 and d1 to tracker values
+	    weightTotal = (weightTotal & 0xFC); // bbbb bb00
+	    PORTD = weightTotal | tracker;
+	    tracker = (tracker & 0xFC) | 0x00; //reset tracker
+	    weightTotal = (weightTotal & 0xFC) | 0x00; // reset weight
     }
     return 1;
 }
