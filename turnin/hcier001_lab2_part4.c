@@ -34,16 +34,16 @@ unsigned char pinC = 0x00;
 	    weightTotal = pinA + pinB + pinC; //get total weight of 3 pins
          
 	   if(weightTotal > 0x8C){
-		   tracker = (tracker & 0xFC) | 0x01;
+		   tracker = tracker | 0x01;
 	   }
 	    if(abs(pinA - pinC) > 0x50){
-		    tracker = (tracker & 0xFD) | 0x02;
+		    tracker = tracker | 0x02;
 	    }
 	   // PORTD = tracker; // setting d0 and d1 to tracker values
 	    weightTotal = (weightTotal & 0xFC) | tracker; // bbbb bb00
 	    PORTD = weightTotal;// + tracker;
-	   // tracker = (tracker & 0xFC) | 0x00; //reset tracker
-	   // weightTotal = (weightTotal & 0xFC) | 0x00; // reset weight
+	    tracker = (tracker & 0xFC) | 0x00; //reset tracker
+	    weightTotal = (weightTotal & 0xFC) | 0x00; // reset weight
     }
     return 1;
 }
