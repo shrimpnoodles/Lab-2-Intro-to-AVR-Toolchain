@@ -38,9 +38,9 @@ unsigned char pinC = 0x00;
 	    if(abs(pinA - pinC) > 0x50){
 		    tracker = (tracker & 0xFD) | 0x02;
 	    }
-	    PORTD = tracker; // setting d0 and d1 to tracker values
-	    weightTotal = (weightTotal & 0xFC); // bbbb bb00
-	    PORTD = weightTotal + tracker;
+	   // PORTD = tracker; // setting d0 and d1 to tracker values
+	    weightTotal = (weightTotal & 0xFC) | tracker; // bbbb bb00
+	    PORTD = weightTotal;// + tracker;
 	    tracker = (tracker & 0xFC) | 0x00; //reset tracker
 	    weightTotal = (weightTotal & 0xFC) | 0x00; // reset weight
     }
