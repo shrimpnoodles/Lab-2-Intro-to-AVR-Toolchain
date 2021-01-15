@@ -32,16 +32,16 @@ int main(void) {
 		if(pin0==0x01){
 			cntavail--;
 		}
-		if(pin1==0x02){
+		if(pin1==0x01){
 			cntavail--;
 		}
-		if(pin2==0x04){
+		if(pin2==0x01){
 			cntavail--;
 		}
-		if(pin3==0x08){
+		if(pin3==0x01){
 			cntavail--;
 		}
-		PORTC = cntavail;
+		PORTC = cntavail; cntavail= 4;
 	}
     return 1;
 }
