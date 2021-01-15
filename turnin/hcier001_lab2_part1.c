@@ -27,7 +27,10 @@ int main(void) {
 	
 	if(tempA0 == 0x01 && tempA1 == 0x00){
 		tempB = 0x01;
-    }
+   	 }
+	 else{
+		 tempB = 0x00;
+	 }
 	PORTB = tempB;
 }
     return 1;
