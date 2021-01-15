@@ -42,7 +42,7 @@ int main(void) {
 			cntavail--;
 		}
 		
-		if(cntavail == 0x04){
+		/*if(cntavail == 0x04){
 			PORTC=0x04;
 		}
 		if(cntavail ==0x03){
@@ -55,12 +55,17 @@ int main(void) {
 			PORTC=0x01;
 }
 		if(cntavail==0x00){
-			PORTC=0x40;
+			PORTC=
 }
 		else{
 			cntavail=(cntavail & 0xFC) | 0x04;
-			PORTC=0x04;
-}
+			PORTC=0x04; */
+	    PORTC = cntavail;
+	    if(cntavail == 0x00){
+		    PORTC = (PORTC | 0x80);
+	    }
+	    cntavail = (cntavail & 0xFC) | 0x04;
+
 	}
     return 1;
 }
