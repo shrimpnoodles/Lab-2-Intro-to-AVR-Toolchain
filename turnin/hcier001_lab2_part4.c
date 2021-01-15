@@ -17,6 +17,7 @@ int main(void) {
 	DDRA =0X00; PORTA = 0XFF;
 	DDRB =0XFF; PORTB =0X00;
   DDRC = 0x00; PORTC = 0XFF;
+	DDRD = 0XFF; PORTD =0X00;
   
   unsigned char weightTotal = 0x00;
   unsigned char tracker = 0x00;
