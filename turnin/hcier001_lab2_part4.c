@@ -30,7 +30,7 @@ unsigned char pinC = 0x00;
 	    	pinB = PINB;
 	    	pinC = PINC;
 	    
-	    weightTotal = pinA + pinB + pinC //get total weight of 3 pins
+	    weightTotal = pinA + pinB + pinC; //get total weight of 3 pins
          
 	   if(weightTotal > 0x8C){
 		   tracker = (tracker & 0xFC) | 0x01;
