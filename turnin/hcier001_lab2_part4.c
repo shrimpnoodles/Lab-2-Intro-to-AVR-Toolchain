@@ -42,5 +42,6 @@ int main(void) {
                  }
              PORTD = weightTotal + tracker;
              tracker = (tracker & 0xFC) | 0x00;
+    }
     return 1;
 }
