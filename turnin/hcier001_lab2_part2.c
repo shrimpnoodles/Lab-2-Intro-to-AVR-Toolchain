@@ -32,13 +32,13 @@ int main(void) {
 		if(pin0==0x01){
 			cntavail--;
 		}
-		if(pin1==0x01){
+		if(pin1==0x02){
 			cntavail--;
 		}
-		if(pin2==0x01){
+		if(pin2==0x04){
 			cntavail--;
 		}
-		if(pin3==0x01){
+		if(pin3==0x08){
 			cntavail--;
 		}
 		PORTC = cntavail;
