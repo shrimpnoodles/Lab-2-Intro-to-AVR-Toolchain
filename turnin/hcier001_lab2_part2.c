@@ -21,7 +21,7 @@ int main(void) {
 	unsigned char pin1 = 0x00; // pina1
 	unsigned char pin2 = 0x00; // pina2
 	unsigned char pin3 = 0x00; // pina3
-	unsigned char cntavail = 4; //counter
+	unsigned char cntavail = 0x04; //counter
     /* Insert your solution below */
     while (1) {
 		pin0 = PINA & 0x01; // 01
@@ -41,7 +41,8 @@ int main(void) {
 		if(pin3==0x08){
 			cntavail--;
 		}
-		PORTC = cntavail;
+	    	
+		PORTC = cntavail; cntavail = (cntavail & 0xFC) | 0x04;
 	}
     return 1;
 }
